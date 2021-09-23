@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+/*
+IMPORTS
+*/
+  @import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+
 
 body {
   background: url(./assets/pomodoro.png) no-repeat center center fixed;

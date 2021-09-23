@@ -1,3 +1,6 @@
+/*
+IMPORTS
+*/
 import React, { useState, useEffect } from 'react';
 import SetTimer from './components/SetTimer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,6 +17,7 @@ function App() {
 
   const saxSound = document.getElementById('beep');
 
+  //Converting time to minutes:seconds
   const convertTime = (count) => {
     let minutes = Math.floor(count / 60);
     let seconds = count % 60;
@@ -22,6 +26,7 @@ function App() {
     return `${minutes}:${seconds}`;
   };
 
+  //Play Pause button
   const handlePlayPause = () => {
     if (isPlaying) {
       clearInterval(loop);
@@ -43,6 +48,7 @@ function App() {
     }
   };
 
+  //Playing sound when timer is at 00:00
   useEffect(() => {
     if (clockCount === 0) {
       setCurrentTimer(currentTimer === 'Session' ? 'Break' : 'Session');
@@ -53,6 +59,7 @@ function App() {
     }
   }, [clockCount, breakCount, currentTimer, saxSound, sessionCount]);
 
+  //Reset Button , reset to default values
   const handleReset = () => {
     setBreakCount(5);
     setSessionCount(25);
@@ -61,6 +68,7 @@ function App() {
     setIsPlaying(false);
     clearInterval(loop);
     try {
+      //resetting when timer is 00:00 , reset also sound
       saxSound.pause();
       saxSound.currentTime = 0;
     } catch (error) {
@@ -68,6 +76,7 @@ function App() {
     }
   };
 
+  //function for decreasing time for breaks and sessions
   const handleDecrease = (type) => {
     if (type === 'Session') {
       if (sessionCount > 1) {
@@ -94,6 +103,7 @@ function App() {
     }
   };
 
+  //function for increasing time for breaks and sessions
   const handleIncrease = (type) => {
     if (type === 'Session') {
       if (sessionCount < 60) {
@@ -120,6 +130,7 @@ function App() {
     }
   };
 
+  //props for breaktimer
   const breakTimer = {
     title: 'Break Lenght',
     count: breakCount,
@@ -128,6 +139,7 @@ function App() {
     handleDecrease,
   };
 
+  //props for sessiontimer
   const sessionTimer = {
     title: 'Session Lenght',
     count: sessionCount,

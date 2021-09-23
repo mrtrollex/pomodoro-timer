@@ -1,3 +1,6 @@
+/*
+IMPORTS
+*/
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -7,7 +10,7 @@ const SetTimer = ({ title, count, handleDecrease, handleIncrease, type }) => {
     <div className="timer-container">
       <h2>{title}</h2>
       <div className="flex actions-wrapper">
-        <button onClick={() => handleDecrease(type)}>
+        <button onClick={() => handleDecrease(type)}> 
           <FontAwesomeIcon icon={faMinus} />
         </button>
         <span>{count}</span>
